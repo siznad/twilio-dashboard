@@ -94,8 +94,9 @@ var taskrouterDashboard = new Vue({
             taskSid = task['taskSid'];
             
             for(element in tasks) {
-              console.log('*****DEBUG*****', element)
-            }
+              for(item in element) {
+              console.log('*****DEBUG*****', item)
+            }}
 
             task['agentName'] = tasks[i]['WorkerName'];
             task['priority'] = tasks[i]['Priority'];
