@@ -73,11 +73,8 @@ def taskrouter_event():
     request_dict = request.form.to_dict()
 
     # Store the Task to WorkerName mapping in process
-    #if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created' or request_dict['EventType'] == 'reservation.wrapup' or request_dict['EventType'] == 'task.wrapup'):
-    try:
+    if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created'):
         task_worker[request_dict['TaskSid']] = request_dict['WorkerName']
-    except Exception as e:
-        print(e)
 
     new_data = {'Data': json.dumps(request_dict)}
     print(new_data)
@@ -101,7 +98,6 @@ def taskrouter_tasks():
         print(task)
         task_model['TaskSid'] = task.sid
         task_model['Priority'] = task.priority
-        # task_model['channel'] = task.TaskChannelUniqueName
         attributes = json.loads(task.attributes)
         for (key, value) in attributes.items():
             task_model[key] = value
