@@ -83,7 +83,6 @@ var taskrouterDashboard = new Vue({
       return axios.get(this.tasks_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
           self.taskList = [];
-
           var tasks = response.data;
           for (var i in tasks) {
             task = {};
