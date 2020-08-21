@@ -83,13 +83,15 @@ var taskrouterDashboard = new Vue({
       return axios.get(this.tasks_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
           self.taskList = [];
+
+          console.log(response.data)
+
           var tasks = response.data;
           for (var i in tasks) {
             task = {};
             task['taskSid'] = tasks[i]['TaskSid'];
             task['from'] = tasks[i]['from']
             task['channel'] = tasks[i]['TaskChannelUniqueName']
-            console.log('*****DEBUG******', tasks[i]['TaskChannelUniqueName'])
             task['team'] = 'POC'
             task['recordingUrl'] = tasks[i]['RecordingUrl'];
             taskSid = task['taskSid'];
