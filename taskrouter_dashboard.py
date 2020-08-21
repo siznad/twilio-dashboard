@@ -101,10 +101,10 @@ def taskrouter_tasks():
         attributes = json.loads(task.attributes)
         for (key, value) in attributes.items():
             task_model[key] = value
-        try:
-            task_model['WorkerName'] = task_worker[task.sid]
-        except:
-            task_model['WorkerName'] = ""
+        # try:
+        task_model['WorkerName'] = task_worker[task.sid]
+        # except:
+        #     task_model['WorkerName'] = ""
         # Workaround to Video channel task missing team name
         # if (task_model['channel'] == 'video'):
         #     task_model['team'] = 'Support'
