@@ -96,6 +96,13 @@ def taskrouter_tasks():
     tasks_results = []
     for task in current_tasks:
         print(task)
+
+        task = client.taskrouter.workspaces(twilio_workspace_sid) \
+                        .tasks(task.sid) \
+                        .fetch()
+
+        print(task.task_queue_friendly_name)
+
         task_model['TaskSid'] = task.sid
         task_model['Priority'] = task.priority
         attributes = json.loads(task.attributes)
