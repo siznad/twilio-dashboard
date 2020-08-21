@@ -79,7 +79,7 @@ def taskrouter_event():
     try:
         task_worker[request_dict['TaskSid']] = request_dict['WorkerName']
     except Exception as e:
-        print(e)
+        print('****DEBUG*****', request_dict)
 
     new_data = {'Data': json.dumps(request_dict)}
     print(new_data)
