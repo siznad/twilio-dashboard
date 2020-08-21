@@ -73,8 +73,8 @@ def taskrouter_event():
     request_dict = request.form.to_dict()
 
     # Store the Task to WorkerName mapping in process
-    if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created'):
-        task_worker[request_dict['TaskSid']] = request_dict['WorkerName']
+    #if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created'):
+    task_worker[request_dict['TaskSid']] = request_dict['WorkerName']
 
     new_data = {'Data': json.dumps(request_dict)}
     print(new_data)
@@ -101,10 +101,10 @@ def taskrouter_tasks():
         attributes = json.loads(task.attributes)
         for (key, value) in attributes.items():
             task_model[key] = value
-        # try:
-        task_model['WorkerName'] = task_worker[task.sid]
-        # except:
-        #     task_model['WorkerName'] = ""
+        try:
+            task_model['WorkerName'] = task_worker[task.sid]
+        except:
+            task_model['WorkerName'] = ""
         # Workaround to Video channel task missing team name
         # if (task_model['channel'] == 'video'):
         #     task_model['team'] = 'Support'
