@@ -97,11 +97,11 @@ def taskrouter_tasks():
     for task in current_tasks:
         print(task)
 
-        task = client.taskrouter.workspaces(twilio_workspace_sid) \
+        tsk = client.taskrouter.workspaces(twilio_workspace_sid) \
                         .tasks(task.sid) \
                         .fetch()
 
-        print(task.task_queue_friendly_name)
+        print(tsk.task_channel_unique_name)
 
         task_model['TaskSid'] = task.sid
         task_model['Priority'] = task.priority
