@@ -72,8 +72,6 @@ def taskrouter_event():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    print('*****DEBUG******', request_dict)
-
     # Store the Task to WorkerName mapping in process
     #if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created' or request_dict['EventType'] == 'reservation.wrapup' or request_dict['EventType'] == 'task.wrapup'):
     try:

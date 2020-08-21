@@ -89,6 +89,7 @@ var taskrouterDashboard = new Vue({
             task['taskSid'] = tasks[i]['TaskSid'];
             task['from'] = tasks[i]['from']
             task['channel'] = tasks[i]['TaskChannelUniqueName']
+            console.log('*****DEBUG******', tasks[i]['TaskChannelUniqueName'])
             task['team'] = 'POC'
             task['recordingUrl'] = tasks[i]['RecordingUrl'];
             taskSid = task['taskSid'];
