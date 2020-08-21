@@ -101,6 +101,7 @@ def taskrouter_tasks():
         print(task)
         task_model['TaskSid'] = task.sid
         task_model['Priority'] = task.priority
+        task_model['channel'] = task.TaskChannelUniqueName
         attributes = json.loads(task.attributes)
         for (key, value) in attributes.items():
             task_model[key] = value
