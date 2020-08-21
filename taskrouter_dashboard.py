@@ -86,7 +86,7 @@ def taskrouter_event():
     # Sync all Statistics
     sync_taskrouter_statistics()
     # Sync all Tasks
-    sync_taskrouter_tasks()
+    #sync_taskrouter_tasks()
     return 'OK'
 
 @app.route('/taskrouter_tasks', methods=['GET'])
