@@ -36,7 +36,7 @@ def sync_taskrouter_statistics():
     # Get TaskRouter Statistics
     stats = {}
     # Get Workspace related stats from last 60 minutes
-    statistics = client.taskrouter.workspaces(twilio_workspace_sid).statistics().fetch(minutes=1440)
+    statistics = client.taskrouter.workspaces(twilio_workspace_sid).statistics().fetch(minutes=60)
     stats['totalTasks'] = statistics.realtime['total_tasks']
     stats['totalWorkers'] = statistics.realtime['total_workers']
     task_statuses = statistics.realtime['tasks_by_status']
