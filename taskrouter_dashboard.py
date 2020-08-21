@@ -72,9 +72,11 @@ def taskrouter_event():
     request_dict = {}
     request_dict = request.form.to_dict()
 
+    print('*****DEBUG******', request_dict)
+
     # Store the Task to WorkerName mapping in process
-    #if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created'):
-    task_worker[request_dict['TaskSid']] = request_dict['WorkerName']
+    if (request_dict['EventType'] == 'reservation.accepted' or request_dict['EventType'] == 'reservation.created'):
+        task_worker[request_dict['TaskSid']] = request_dict['WorkerName']
 
     new_data = {'Data': json.dumps(request_dict)}
     print(new_data)
