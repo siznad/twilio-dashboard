@@ -147,7 +147,7 @@
                     <tr v-for="task,id of taskList">
                       <td>{{task.from}}</td>
                       <td class="center aligned">
-                        <img v-if="task.channel == 'Phone'" class="ui centered middle aligned mini image" src="/static/images/phone.png">
+                        <img v-if="task.channel == 'voice'" class="ui centered middle aligned mini image" src="/static/images/phone.png">
                         <img v-else-if="task.channel == 'Chat'" class="ui centered middle aligned mini image" src="/static/images/chat.png">
                         <img v-else-if="task.channel == 'Video'" class="ui centered middle aligned mini image" src="/static/images/video.png">
                         <div v-else>
