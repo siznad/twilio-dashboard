@@ -93,7 +93,7 @@ var taskrouterDashboard = new Vue({
             task['recordingUrl'] = tasks[i]['RecordingUrl'];
             taskSid = task['taskSid'];
             
-            for(element in tasks[i]) {
+            for(element in tasks) {
               console.log('*****DEBUG*****', element)
             }
 
