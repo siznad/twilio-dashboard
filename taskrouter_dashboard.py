@@ -231,9 +231,11 @@ def token():
 def getcallstats():
     print(request.args['callSid'])
 
-    # url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
-    # response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
-    # print(response.text)
+    url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
+    response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
+    print(response.text)
+
+    return 'OK'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True)
