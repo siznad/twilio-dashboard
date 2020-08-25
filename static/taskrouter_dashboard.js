@@ -100,7 +100,10 @@ var taskrouterDashboard = new Vue({
               task['errorStatus'] = '';
               $.getJSON("https://insights.twilio.com/v1/Voice/" + tasks[i]['call_sid'] + "/Summary")
               .then(function(response) {
-                console.log(response)
+                console.log("************DEBUG", response)
+              })
+              .catch(err => {
+                console.log("************DEBUG", err)
               });
             }
             else if (task['taskStatus'] == 'canceled') {
