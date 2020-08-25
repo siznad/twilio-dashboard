@@ -235,11 +235,7 @@ def getcallstats():
 
     metrics = json.dumps(response)
 
-    print(type(metrics))
-
-    print(metrics)
-
-    #print('****DEBUG******', metrics['metrics'])
+    print('****DEBUG******', metrics['metrics'])
 
     return 'OK'
 
