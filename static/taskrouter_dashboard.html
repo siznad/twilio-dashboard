@@ -136,7 +136,7 @@
                   <tr>
                     <th class="center aligned">From</th>
                     <th class="center aligned">Channel</th>
-                    <th class="center aligned">Team</th>
+                    <th class="center aligned">Quality</th>
                     <th class="center aligned">Agent</th>
                     <th class="center aligned">Priority</th>
                     <th class="center aligned">Task Status</th>
@@ -148,13 +148,13 @@
                       <td>{{task.from}}</td>
                       <td class="center aligned">
                         <img v-if="task.channel == 'voice'" class="ui centered middle aligned mini image" src="/static/images/phone.png">
-                        <img v-else-if="task.channel == 'Chat'" class="ui centered middle aligned mini image" src="/static/images/chat.png">
-                        <img v-else-if="task.channel == 'Video'" class="ui centered middle aligned mini image" src="/static/images/video.png">
+                        <img v-else-if="task.channel == 'chat'" class="ui centered middle aligned mini image" src="/static/images/chat.png">
+                        <img v-else-if="task.channel == 'video'" class="ui centered middle aligned mini image" src="/static/images/video.png">
                         <div v-else>
                           {{task.channel}}
                         </div>
                       </td>
-                      <td>{{task.team}}</td>
+                      <td>{{task.quality}}</td>
                       <td>{{task.agentName}}</td>
                       <td class="center aligned">{{task.priority}}</td>
                       <td>
