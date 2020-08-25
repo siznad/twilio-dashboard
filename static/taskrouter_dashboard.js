@@ -98,7 +98,7 @@ var taskrouterDashboard = new Vue({
             if (task['taskStatus'] == 'completed') {
               task['successStatus'] = 'success';
               task['errorStatus'] = '';
-              $.getJSON("https://insights.twilio.com/v1/Voice/" + tasks[i]['call_sid'] + "/Summary")
+              $.getJSON("https://insights.twilio.com/v1/Voice/" + tasks[i]['call_sid'] + "/Summary", {callSid: tasks[i]['worker_call_sid']})
               .then(function(response) {
                 console.log("************DEBUG", response)
               })
