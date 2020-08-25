@@ -233,7 +233,6 @@ def getcallstats():
     response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
     print('****DEBUG******', response.text)
 
-    sync_taskrouter_statistics()
     return 'OK'
 
 if __name__ == '__main__':
