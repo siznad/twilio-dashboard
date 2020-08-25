@@ -227,6 +227,14 @@ def token():
     # Return token info as JSON
     return jsonify(identity=identity, token=token.to_jwt().decode('utf-8'))
 
+@app.route('/getcallstats', methods=['GET'])
+def getcallstats():
+    request_dict = {}
+    request_dict = request.form.to_dict()
+
+    url = 'https://insights.twilio.com/v1/Voice/' + request_dict['callSid'] + '/Metrics'
+    response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
+    print(response.text)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True)

@@ -98,7 +98,7 @@ var taskrouterDashboard = new Vue({
             if (task['taskStatus'] == 'completed') {
               task['successStatus'] = 'success';
               task['errorStatus'] = '';
-              $.getJSON("https://auburn-goldfish-8475.twil.io/cqstats", {callSid: tasks[i]['worker_call_sid']})
+              $.getJSON("/getcallstats", {callSid: tasks[i]['worker_call_sid']})
               .then(function(response) {
                 console.log("************DEBUG", response)
               })
