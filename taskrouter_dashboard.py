@@ -229,7 +229,7 @@ def token():
 
 @app.route('/getcallstats', methods=['GET'])
 def getcallstats():
-    url = 'https://insights.twilio.com/v1/Voice/' + request.args[0]['callSid'] + '/Metrics'
+    url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
     response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
     print(response.text)
 
