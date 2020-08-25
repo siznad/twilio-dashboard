@@ -98,11 +98,11 @@ var taskrouterDashboard = new Vue({
             if (task['taskStatus'] == 'completed') {
               task['successStatus'] = 'success';
               task['errorStatus'] = '';
+              console.log('DEBUG*******************', tasks[i]['call_sid'])
             }
             else if (task['taskStatus'] == 'canceled') {
               task['successStatus'] = '';
               task['cancelStatus'] = 'error';
-              console.log('DEBUG*******************', tasks[i]['call_sid'])
             }
             else {
               task['successStatus'] = '';
