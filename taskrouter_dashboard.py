@@ -232,6 +232,9 @@ def getcallstats():
     request_dict = {}
     request_dict = request.form.to_dict()
 
+    for k,y in request_dict.items():
+        print(k, y)
+
     url = 'https://insights.twilio.com/v1/Voice/' + request_dict['callSid'] + '/Metrics'
     response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
     print(response.text)
