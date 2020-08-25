@@ -233,7 +233,7 @@ def getcallstats():
     url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
     response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
 
-    metrics = json.dumps(response.text)
+    metrics = json.dumps(response)
 
     print(type(metrics))
 
