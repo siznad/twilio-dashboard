@@ -122,6 +122,7 @@ def taskrouter_tasks():
         task_model['TaskStatus'] = task.assignment_status
         tasks_results.append(dict(task_model))
     result = json.dumps(tasks_results)
+    
     print(result)
     return result
 
