@@ -244,9 +244,9 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    alarm = json.loads(request_dict['Payload'])
+    alarm = json.loads(request_dict)
 
-    print(alarm['error_code'])
+    print(alarm['Payload']['error_code'])
     print(alarm['Level'])
     print(alarm['Timestamp'])
 
