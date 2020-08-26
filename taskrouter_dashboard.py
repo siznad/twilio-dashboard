@@ -252,7 +252,7 @@ def alarms():
     print(payload['webhook']['request']['method'])
     print(payload['webhook']['request']['parameters'])
     print(payload['webhook']['response']['status_code'])
-    print(payload['webhook']['response']['body'])
+    print(payload['webhook']['response']['body']['message'])
 
     return 'OK'
 
