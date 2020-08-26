@@ -228,18 +228,16 @@ def token():
     # Return token info as JSON
     return jsonify(identity=identity, token=token.to_jwt().decode('utf-8'))
 
-@app.route('/getcallstats', methods=['GET'])
-def getcallstats():
-    url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
-    response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
+# @app.route('/getcallstats', methods=['GET'])
+# def getcallstats():
+#     url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
+#     response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
 
-    metrics = json.loads(response.text)
+#     metrics = json.loads(response.text)
 
-    print(type(metrics))
+#     print('****DEBUG******', metrics['metrics'])
 
-    print('****DEBUG******', metrics['metrics'])
-
-    return 'OK'
+#     return 'OK'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True)

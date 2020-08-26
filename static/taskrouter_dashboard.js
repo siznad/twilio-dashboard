@@ -89,7 +89,6 @@ var taskrouterDashboard = new Vue({
             task['taskSid'] = tasks[i]['TaskSid'];
             task['from'] = tasks[i]['from']
             task['channel'] = tasks[i]['channel']
-            task['quality'] = ''
             task['recordingUrl'] = tasks[i]['RecordingUrl'];
             taskSid = task['taskSid'];
             task['agentName'] = tasks[i]['WorkerName'];
@@ -98,13 +97,13 @@ var taskrouterDashboard = new Vue({
             if (task['taskStatus'] == 'completed') {
               task['successStatus'] = 'success';
               task['errorStatus'] = '';
-              $.getJSON("/getcallstats", {callSid: tasks[i]['worker_call_sid']})
-              .then(function(response) {
-                console.log(response)
-              })
-              .catch(err => {
-                console.log(err)
-              });
+              // $.getJSON("/getcallstats", {callSid: tasks[i]['worker_call_sid']})
+              // .then(function(response) {
+              //   console.log(response)
+              // })
+              // .catch(err => {
+              //   console.log(err)
+              // });
             }
             else if (task['taskStatus'] == 'canceled') {
               task['successStatus'] = '';
