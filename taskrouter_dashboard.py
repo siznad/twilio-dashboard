@@ -244,7 +244,7 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    print(request_dict['Payload']['error_code'])
+    print(type(request_dict['Payload']))
 
     return 'OK'
 
