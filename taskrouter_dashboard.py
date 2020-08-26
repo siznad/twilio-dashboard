@@ -244,7 +244,7 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    print(type(request_dict))
+    print(request_dict['Payload'])
 
     payload = json.loads(request_dict['Payload'])
 
