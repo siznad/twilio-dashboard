@@ -251,8 +251,8 @@ def alarms():
     print(request_dict['Timestamp'])
     print(payload['webhook']['request']['method'])
     print(payload['webhook']['request']['parameters'])
-    print(payload['webhook']['response'])
-    print(payload['webhook']['body'])
+    print(payload['webhook']['response']['status_code'])
+    print(payload['webhook']['response']['body'])
 
     return 'OK'
 
