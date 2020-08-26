@@ -241,7 +241,10 @@ def token():
 
 @app.route('/alarms', methods=['POST'])
 def alarms():
-    print(request)
+    request_dict = {}
+    request_dict = request.form.to_dict()
+
+    print(request_dict)
 
     return 'OK'
 
