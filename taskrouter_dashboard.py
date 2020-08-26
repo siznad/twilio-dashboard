@@ -246,7 +246,9 @@ def alarms():
 
     alarm = json.loads(request_dict['Payload'])
 
-    print(request_dict)
+    print(alarm['error_code'])
+    print(alarm['Level'])
+    print(alarm['Timestamp'])
 
     return 'OK'
 
