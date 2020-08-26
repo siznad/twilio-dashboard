@@ -245,7 +245,6 @@ def alarms():
     request_dict = request.form.to_dict()
 
     payload = json.loads(request_dict['Payload'])
-    message = json.loads(request_dict['Payload']['webhook']['response']['body']['message'])
 
     print(payload['error_code'])
     print(request_dict['Level'])
@@ -253,7 +252,7 @@ def alarms():
     print(payload['webhook']['request']['method'])
     print(payload['webhook']['request']['parameters'])
     print(payload['webhook']['response']['status_code'])
-    print(message)
+    print(payload['webhook']['response']['body'])
 
     return 'OK'
 
