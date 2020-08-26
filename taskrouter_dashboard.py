@@ -244,11 +244,11 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    alarm = json.loads(request_dict)
+    payload = json.loads(request_dict['Payload'])
 
-    print(alarm['Payload']['error_code'])
-    print(alarm['Level'])
-    print(alarm['Timestamp'])
+    print(payload['error_code'])
+    print(request_dict['Level'])
+    print(request_dict['Timestamp'])
 
     return 'OK'
 
