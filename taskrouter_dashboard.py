@@ -244,7 +244,7 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    print(request_dict['Payload'])
+    print(request_dict['Payload']['webhook'])
 
     payload = json.loads(request_dict['Payload'])
 
