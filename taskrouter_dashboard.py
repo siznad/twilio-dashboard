@@ -246,9 +246,9 @@ def alarms():
 
     payload = json.loads(request_dict['Payload'])
 
-    print(payload['error_code'])
-    print(request_dict['Level'])
     print(request_dict['Timestamp'])
+    print(request_dict['Level'])
+    print(payload['error_code'])
     print(payload['webhook']['request']['method'])
     print(payload['webhook']['request']['parameters'])
     print(payload['webhook']['response']['status_code'])
