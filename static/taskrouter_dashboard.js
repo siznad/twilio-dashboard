@@ -83,7 +83,6 @@ var taskrouterDashboard = new Vue({
         })
     },
     fetchTasks: function () {
-      console.log('*******In fetch*********')
       var self = this;
       // Fetch the current Tasks List
       var task = {};
