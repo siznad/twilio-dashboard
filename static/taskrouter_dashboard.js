@@ -30,7 +30,7 @@ var taskrouterDashboard = new Vue({
     workers: {},
     tasks_get_url: "/taskrouter_tasks",
     taskList: [],
-    alarmList: [],
+    alertList: [],
     taskWorker: {'1': '1'},
     taskCurrentSteps: {
       "canceled": 0,
@@ -188,15 +188,6 @@ var taskrouterDashboard = new Vue({
 
           self.alertList.push(alarm)
         }
-
-        console.log('******DEBUG*******', self.alertList)
-        
-        // this.timestamp = data['timestamp'];
-        // this.level = data['level'];
-        // this.error_code = data['error_code'];
-        // this.method = data['method'];
-        // this.status_code = data['status_code'];
-        // this.body = data['body'];
       }
     },
     serverSideStatsInit: function() {
