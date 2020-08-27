@@ -10,6 +10,8 @@ from twilio.rest import Client
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import SyncGrant
 import datetime
+from collections import OrderedDict 
+from operator import getitem 
 
 logging.basicConfig(level=logging.INFO)
 
@@ -229,40 +231,8 @@ def token():
     # Return token info as JSON
     return jsonify(identity=identity, token=token.to_jwt().decode('utf-8'))
 
-# @app.route('/getcallstats', methods=['GET'])
-# def getcallstats():
-#     url = 'https://insights.twilio.com/v1/Voice/' + request.args['callSid'] + '/Metrics'
-#     response = requests.request("GET", url, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
-
-#     metrics = json.loads(response.text)
-
-#     print('****DEBUG******', metrics['metrics'])
-
-#     return 'OK'
-
 @app.route('/alarms', methods=['POST'])
 def alarms():
-    # request_dict = {}
-    # request_dict = request.form.to_dict()
-
-    # payload = json.loads(request_dict['Payload'])
-
-    # request_dict = {
-    #     'timestamp': request_dict['Timestamp'],
-    #     'level': request_dict['Level'],
-    #     'error_code': payload['error_code'],
-    #     'method': payload['webhook']['request']['method'],
-    #     'status_code': payload['webhook']['response']['status_code'],
-    #     'body': payload['webhook']['response']['body']
-    # }
-
-    # new_data = {'Data': json.dumps(request_dict)}
-    # print(new_data)
-    # sync_document = 'SyncAlarms'
-    # url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
-    # response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
-    # print(response.text)
-
     alarmList = {}
 
     alerts = client.monitor.alerts.list(
@@ -281,6 +251,11 @@ def alarms():
             'method': alert.request_method,
             'body': alert.response_body
             }    
+
+    res = OrderedDict(sorted(alarmList.items(), 
+       key = lambda x: getitem(x[1], 'timestamp'))) 
+
+    print(res)
 
     new_data = {'Data': json.dumps(alarmList)}
     print(new_data)
