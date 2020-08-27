@@ -10,8 +10,6 @@ from twilio.rest import Client
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import SyncGrant
 import datetime
-from collections import OrderedDict 
-from operator import getitem 
 
 logging.basicConfig(level=logging.INFO)
 
@@ -252,10 +250,7 @@ def alarms():
             'body': alert.response_body
             }    
 
-    res = OrderedDict(sorted(alarmList.items(), 
-       key = lambda x: getitem(x[1], 'timestamp'))) 
-
-    new_data = {'Data': json.dumps(res)}
+    new_data = {'Data': json.dumps(alarmList)}
     print(new_data)
     sync_document = 'SyncAlarms'
     url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
