@@ -188,11 +188,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <td>{{timestamp}}</td>
-                  <td>{{level}}</td>
-                  <td>{{error_code}}</td>
-                  <td>{{method}}</td>
-                  <td>{{body}}</td>
+                  <tr v-for="alarm of alarmList">
+                    <td>{{alarm.timestamp}}</td>
+                    <td>{{alarm.level}}</td>
+                    <td>{{alarm.error_code}}</td>
+                    <td>{{alarm.method}}</td>
+                    <td>{{alarm.body}}</td>
+                  </tr>
                 </tbody>
               </table>
             <!-- <div>
