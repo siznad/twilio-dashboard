@@ -174,13 +174,28 @@ var taskrouterDashboard = new Vue({
     },
     syncAlarms: function(data) {
       if (data != null) {
-        console.log('********DEBUG*********', data, '********DEBUG*********')
-        this.timestamp = data['timestamp'];
-        this.level = data['level'];
-        this.error_code = data['error_code'];
-        this.method = data['method'];
-        this.status_code = data['status_code'];
-        this.body = data['body'];
+        var self = this;
+        console.log(data)
+        self.alertList = []
+        for (var i in data ) {
+          alarm = {}
+          alarm['timestamp'] = data[i]['timestamp'];
+          alarm['level'] = data[i]['level'];
+          alarm['error_code'] = data[i]['error_code'];
+          alarm['method'] = data[i]['method'];
+          alarm['body']  = data[i]['body'];
+
+          self.alertList.push(alarm)
+        }
+
+        console.log('******DEBUG*******', self.alertList)
+        
+        // this.timestamp = data['timestamp'];
+        // this.level = data['level'];
+        // this.error_code = data['error_code'];
+        // this.method = data['method'];
+        // this.status_code = data['status_code'];
+        // this.body = data['body'];
       }
     },
     serverSideStatsInit: function() {
