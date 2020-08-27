@@ -40,7 +40,11 @@ var taskrouterDashboard = new Vue({
       "completed": 5
     },
     timestamp: "",
-
+    level: "",
+    error_code: "",
+    method: "",
+    status_code: "",
+    body: "",
   },
   methods: {
     displayRecording: function (task) {
