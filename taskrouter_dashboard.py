@@ -9,6 +9,7 @@ import logging
 from twilio.rest import Client
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import SyncGrant
+import datetime
 
 logging.basicConfig(level=logging.INFO)
 
@@ -274,7 +275,7 @@ def alarms():
         alert = client.monitor.alerts(record.sid).fetch()
 
         alarmList[alert.sid] = {
-            'timestamp': alert.date_created,
+            'timestamp': datetime.datetime.(alert.date_created),
             'level': alert.log_level,
             'error_code': alert.error_code,
             'method': alert.request_method,
