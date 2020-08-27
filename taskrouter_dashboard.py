@@ -255,9 +255,7 @@ def alarms():
     res = OrderedDict(sorted(alarmList.items(), 
        key = lambda x: getitem(x[1], 'timestamp'))) 
 
-    print(res)
-
-    new_data = {'Data': json.dumps(alarmList)}
+    new_data = {'Data': json.dumps(res)}
     print(new_data)
     sync_document = 'SyncAlarms'
     url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
