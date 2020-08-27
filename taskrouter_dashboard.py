@@ -262,7 +262,7 @@ def alarms():
     # response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
     # print(response.text)
 
-    alarmList = []
+    alarmList = {}
 
     alerts = client.monitor.alerts.list(
         end_date='2020-08-27',
@@ -273,7 +273,7 @@ def alarms():
     for record in alerts:
         alert = client.monitor.alerts(record.sid).fetch()
 
-        alarmList.append(
+        alarmList[alert.sid] = (
             {
             'timestamp': alert.date_created,
             'level': alert.log_level,
@@ -283,7 +283,11 @@ def alarms():
             }    
         )
 
-    print(alarmList)
+    new_data = {'Data': json.dumps(alarmList)}
+    sync_document = 'SyncAlarms'
+    url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
+    response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
+    print(response.text)
 
     return 'OK'
 
