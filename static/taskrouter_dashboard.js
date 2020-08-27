@@ -38,7 +38,9 @@ var taskrouterDashboard = new Vue({
       "assigned": 3,
       "wrapping": 4,
       "completed": 5
-    }
+    },
+    timestamp: "",
+
   },
   methods: {
     displayRecording: function (task) {
