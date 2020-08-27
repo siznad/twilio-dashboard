@@ -30,6 +30,7 @@ var taskrouterDashboard = new Vue({
     workers: {},
     tasks_get_url: "/taskrouter_tasks",
     taskList: [],
+    alarmList: [],
     taskWorker: {'1': '1'},
     taskCurrentSteps: {
       "canceled": 0,
