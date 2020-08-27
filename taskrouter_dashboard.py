@@ -275,7 +275,7 @@ def alarms():
         alert = client.monitor.alerts(record.sid).fetch()
 
         alarmList[alert.sid] = {
-            'timestamp': datetime.datetime(alert.date_created),
+            'timestamp': str(alert.date_created),
             'level': alert.log_level,
             'error_code': alert.error_code,
             'method': alert.request_method,
