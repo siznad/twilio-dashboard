@@ -188,7 +188,7 @@ var taskrouterDashboard = new Vue({
 
           self.alertList.push(alarm)
         }
-        list.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1)
+        alertList.sort((a, b) => (a.timestamp > b.timestamp) ? 1 : -1)
       }
     },
     serverSideStatsInit: function() {
