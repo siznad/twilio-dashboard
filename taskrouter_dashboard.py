@@ -252,7 +252,7 @@ def alarms():
         'error_code': payload['error_code'],
         'method': payload['webhook']['request']['method'],
         'status_code': payload['webhook']['response']['status_code'],
-        'body': (payload['webhook']['response']['body']
+        'body': payload['webhook']['response']['body']
     }
 
     print(request_dict)
