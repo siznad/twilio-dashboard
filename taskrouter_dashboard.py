@@ -246,13 +246,23 @@ def alarms():
 
     payload = json.loads(request_dict['Payload'])
 
-    print(request_dict['Timestamp'])
-    print(request_dict['Level'])
-    print(payload['error_code'])
-    print(payload['webhook']['request']['method'])
-    print(payload['webhook']['request']['parameters'])
-    print(payload['webhook']['response']['status_code'])
-    print(payload['webhook']['response']['body'])
+    request_dict = {
+        'timestamp': request_dict['Timestamp'],
+        'level': request_dict['Level'],
+        'error_code': payload['error_code'],
+        'method': payload['webhook']['request']['method'],
+        'status_code': payload['webhook']['response']['status_code'],
+        'body': (payload['webhook']['response']['body']
+    }
+
+    print(request_dict)
+
+    # new_data = {'Data': json.dumps(request_dict)}
+    # print(new_data)
+    # sync_document = 'SyncAlarms'
+    # url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
+    # response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
+    # print(response.text)
 
     return 'OK'
 
