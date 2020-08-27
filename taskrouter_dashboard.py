@@ -273,7 +273,7 @@ def alarms():
     for record in alerts:
         alert = client.monitor.alerts(record.sid).fetch()
 
-        print(alert.alert_text)
+        print(alert.response_body)
 
     #     request_dict = alert.form.to_dict()
     #     payload = json.loads(request_dict['Payload'])
