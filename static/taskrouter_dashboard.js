@@ -188,8 +188,6 @@ var taskrouterDashboard = new Vue({
 
           self.alertList.push(alarm)
         }
-
-        alertList = alertList.sort()
       }
     },
     serverSideStatsInit: function() {
