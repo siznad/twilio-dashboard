@@ -275,21 +275,21 @@ def alarms():
 
         print(alert.alert_text)
 
-        request_dict = alert.form.to_dict()
-        payload = json.loads(request_dict['Payload'])
+    #     request_dict = alert.form.to_dict()
+    #     payload = json.loads(request_dict['Payload'])
 
-        alarmList.append(
-            {
-            'timestamp': request_dict['Timestamp'],
-            'level': request_dict['Level'],
-            'error_code': payload['error_code'],
-            'method': payload['webhook']['request']['method'],
-            'status_code': payload['webhook']['response']['status_code'],
-            'body': payload['webhook']['response']['body']
-            }    
-        )
+    #     alarmList.append(
+    #         {
+    #         'timestamp': request_dict['Timestamp'],
+    #         'level': request_dict['Level'],
+    #         'error_code': payload['error_code'],
+    #         'method': payload['webhook']['request']['method'],
+    #         'status_code': payload['webhook']['response']['status_code'],
+    #         'body': payload['webhook']['response']['body']
+    #         }    
+    #     )
 
-    print(alarmList)
+    # print(alarmList)
 
     return 'OK'
 
