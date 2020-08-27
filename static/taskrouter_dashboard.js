@@ -240,8 +240,8 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   syncClient.document(syncDocName).then(function (doc) {
     doc.on("updated",function(data) {
       console.log('SyncAlarms: ' + JSON.stringify(data));
-      taskrouterDashboard.syncEvents(data);
-      taskrouterDashboard.syncAlarms();
+      taskrouterDashboard.syncAlarms(data);
+      //taskrouterDashboard.fetchData();
     });
   });
 });
