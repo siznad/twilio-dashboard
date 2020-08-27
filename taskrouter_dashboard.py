@@ -282,11 +282,6 @@ def alarms():
             'body': alert.response_body
             }    
 
-    lst = alarmList.keys()
-    alarmList = sorted(lst)
-
-    print(alarmList)
-
     new_data = {'Data': json.dumps(alarmList)}
     print(new_data)
     sync_document = 'SyncAlarms'
@@ -298,3 +293,4 @@ def alarms():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True)
+    alarms()
