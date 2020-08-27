@@ -282,6 +282,11 @@ def alarms():
             'body': alert.response_body
             }    
 
+    lst = alarmList.keys()
+    alarmList = sorted(lst)
+
+    print(alarmList)
+
     new_data = {'Data': json.dumps(alarmList)}
     print(new_data)
     sync_document = 'SyncAlarms'

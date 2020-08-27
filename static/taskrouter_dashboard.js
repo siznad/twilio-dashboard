@@ -203,7 +203,6 @@ var taskrouterDashboard = new Vue({
   mounted() {
     this.serverSideStatsInit();
     this.fetchTasks();
-    this.syncAlarms();
   }
 })
 
