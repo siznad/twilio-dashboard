@@ -273,17 +273,16 @@ def alarms():
     for record in alerts:
         alert = client.monitor.alerts(record.sid).fetch()
 
-        alarmList[alert.sid] = (
-            {
+        alarmList[alert.sid] = {
             'timestamp': alert.date_created,
             'level': alert.log_level,
             'error_code': alert.error_code,
             'method': alert.request_method,
             'body': alert.response_body
             }    
-        )
 
     new_data = {'Data': json.dumps(alarmList)}
+    print(new_data)
     sync_document = 'SyncAlarms'
     url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
     response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
