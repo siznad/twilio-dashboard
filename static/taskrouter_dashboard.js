@@ -176,7 +176,7 @@ var taskrouterDashboard = new Vue({
     syncAlarms: function(data) {
       if (data != null) {
         var self = this;
-        console.log(data)
+        console.log('******************debug*****************', data)
         self.alertList = []
         for (var i in data ) {
           alarm = {}
