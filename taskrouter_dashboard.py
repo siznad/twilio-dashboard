@@ -244,23 +244,32 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    payload = json.loads(request_dict['Payload'])
+    # payload = json.loads(request_dict['Payload'])
 
-    request_dict = {
-        'timestamp': request_dict['Timestamp'],
-        'level': request_dict['Level'],
-        'error_code': payload['error_code'],
-        'method': payload['webhook']['request']['method'],
-        'status_code': payload['webhook']['response']['status_code'],
-        'body': payload['webhook']['response']['body']
-    }
+    # request_dict = {
+    #     'timestamp': request_dict['Timestamp'],
+    #     'level': request_dict['Level'],
+    #     'error_code': payload['error_code'],
+    #     'method': payload['webhook']['request']['method'],
+    #     'status_code': payload['webhook']['response']['status_code'],
+    #     'body': payload['webhook']['response']['body']
+    # }
 
-    new_data = {'Data': json.dumps(request_dict)}
-    print(new_data)
-    sync_document = 'SyncAlarms'
-    url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
-    response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
-    print(response.text)
+    # new_data = {'Data': json.dumps(request_dict)}
+    # print(new_data)
+    # sync_document = 'SyncAlarms'
+    # url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
+    # response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
+    # print(response.text)
+
+    alerts = client.monitor.alerts.list(
+        end_date='2020-08-27',
+        start_date='2020-08-27',
+        limit=20
+    )
+
+    for record in alerts:
+        print(record.sid)
 
     return 'OK'
 
