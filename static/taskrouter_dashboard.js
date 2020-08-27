@@ -169,6 +169,12 @@ var taskrouterDashboard = new Vue({
     syncAlarms: function(data) {
       if (data != null) {
         console.log(data)
+        this.timestamp = data['timestamp'];
+        this.level = data['level'];
+        this.error_code = data['error_code'];
+        this.method = data['method'];
+        this.status_code = data['status_code'];
+        this.body = data['body'];
       }
     },
     serverSideStatsInit: function() {

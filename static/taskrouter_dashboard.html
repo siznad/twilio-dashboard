@@ -177,7 +177,7 @@
                     </tr>
                 </tbody>
               </table>
-              <!-- <table class="ui selectable celled table v-cloak--hidden">
+              <table class="ui selectable celled table v-cloak--hidden">
                 <thead>
                   <tr>
                     <th class="center aligned">Timestamp</th>
@@ -189,8 +189,15 @@
                     <th class="center aligned">Message</th>
                   </tr>
                 </thead>
-                <tbody> -->
-
+                <tbody>
+                  <td>{{timestamp}}</td>
+                  <td>{{level}}</td>
+                  <td>{{error_code}}</td>
+                  <td>{{method}}</td>
+                  <td>{{status_code}}</td>
+                  <td>{{body}}</td>
+                </tbody>
+              </table>
             <!-- <div>
                 <p><pre>data: {{$data}}</pre></p>
             </div> -->
