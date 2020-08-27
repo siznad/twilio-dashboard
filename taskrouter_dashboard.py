@@ -271,7 +271,8 @@ def alarms():
     )
 
     for record in alerts:
-        print(record)
+        for i in record:
+            print(i)
     #     request_dict = record.form.to_dict()
     #     payload = json.loads(request_dict['Payload'])
 
