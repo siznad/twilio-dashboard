@@ -273,23 +273,17 @@ def alarms():
     for record in alerts:
         alert = client.monitor.alerts(record.sid).fetch()
 
-        print(alert.response_body)
+        alarmList.append(
+            {
+            'timestamp': alert.date_created,
+            'level': alert.log_level,
+            'error_code': alert.error_code,
+            'method': alert.request_method,
+            'body': alert.response_body
+            }    
+        )
 
-    #     request_dict = alert.form.to_dict()
-    #     payload = json.loads(request_dict['Payload'])
-
-    #     alarmList.append(
-    #         {
-    #         'timestamp': request_dict['Timestamp'],
-    #         'level': request_dict['Level'],
-    #         'error_code': payload['error_code'],
-    #         'method': payload['webhook']['request']['method'],
-    #         'status_code': payload['webhook']['response']['status_code'],
-    #         'body': payload['webhook']['response']['body']
-    #         }    
-    #     )
-
-    # print(alarmList)
+    print(alarmList)
 
     return 'OK'
 
