@@ -255,8 +255,6 @@ def alarms():
         'body': payload['webhook']['response']['body']
     }
 
-    print(request_dict)
-
     new_data = {'Data': json.dumps(request_dict)}
     print(new_data)
     sync_document = 'SyncAlarms'

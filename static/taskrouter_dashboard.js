@@ -166,6 +166,11 @@ var taskrouterDashboard = new Vue({
         this.currentWorkerActivity['wrapupWorkers'] = data['wrappingTasks'];
       }
     },
+    syncAlarms: function(data) {
+      if (data != null) {
+        console.log(data)
+      }
+    },
     serverSideStatsInit: function() {
       return axios.get(this.stats_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
@@ -236,7 +241,7 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
     doc.on("updated",function(data) {
       console.log('SyncAlarms: ' + JSON.stringify(data));
       taskrouterDashboard.syncEvents(data);
-      //taskrouterDashboard.fetchData();
+      taskrouterDashboard.syncAlarms();
     });
   });
 });
