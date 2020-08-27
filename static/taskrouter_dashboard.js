@@ -224,4 +224,19 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       taskrouterDashboard.syncTaskRouterStats(data);
     });
   });
+  //This code will create and/or open a Sync Alarm Events document
+  syncDocName = 'SyncAlarms';
+  syncClient.document(syncDocName).then(function(doc) {
+    //doc.set({});
+    console.log(syncDocName + ' Opened: ' + doc.value)
+  });
+  //Let's subscribe to changes on this document, so when something
+  //changes on this document, we can trigger our UI to update
+  syncClient.document(syncDocName).then(function (doc) {
+    doc.on("updated",function(data) {
+      console.log('SyncAlarms: ' + JSON.stringify(data));
+      taskrouterDashboard.syncEvents(data);
+      //taskrouterDashboard.fetchData();
+    });
+  });
 });
