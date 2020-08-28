@@ -234,8 +234,7 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    for k, y in request_dict.items():
-        print(k, y)
+    print(type(request_dict))
 
     # print('DEBUG*******************', request_dict['Payload']['Timestamp'])
     # print('DEBUG*******************', request_dict['Level'])
