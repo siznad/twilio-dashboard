@@ -234,8 +234,10 @@ def alarms():
     request_dict = {}
     request_dict = request.args.to_dict()
 
+    print(request_dict)
 
-    print('DEBUG*******************', request_dict['Timestamp'])
+
+    # print('DEBUG*******************', request_dict['Timestamp'])
     # print('DEBUG*******************', request_dict['Level'])
     # print('DEBUG*******************', request_dict['error_code'])
     # print('DEBUG*******************', request_dict['method'])
