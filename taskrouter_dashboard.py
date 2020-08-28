@@ -231,7 +231,7 @@ def token():
 
 @app.route('/alarms', methods=['POST', 'GET'])
 def alarms():
-    print(request)
+    print('*****DEBUG*****', request.timestamp)
     alarmList = {}
 
     alerts = client.monitor.alerts.list(
