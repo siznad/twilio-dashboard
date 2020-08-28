@@ -229,7 +229,7 @@ def token():
     # Return token info as JSON
     return jsonify(identity=identity, token=token.to_jwt().decode('utf-8'))
 
-@app.route('/alarms', methods=['POST'])
+@app.route('/alarms', methods=['POST', 'GET'])
 def alarms():
     alarmList = {}
 
