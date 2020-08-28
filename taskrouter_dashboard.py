@@ -10,6 +10,7 @@ from twilio.rest import Client
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import SyncGrant
 import datetime
+from time import sleep
 
 logging.basicConfig(level=logging.INFO)
 
@@ -256,6 +257,8 @@ def alarms():
     url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
     response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
     print(response)
+
+    sleep(1000)
 
     return 'OK'
 
