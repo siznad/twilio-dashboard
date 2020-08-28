@@ -234,7 +234,9 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    print('DEBUG*******************', request_dict['Timestamp'])
+    alarms = json.loads(request_dict)
+
+    print('DEBUG*******************', alarms['Timestamp'])
     print('DEBUG*******************', request_dict['Level'])
     print('DEBUG*******************', request_dict['error_code'])
     print('DEBUG*******************', request_dict['method'])
