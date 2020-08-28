@@ -232,7 +232,7 @@ def token():
 @app.route('/alarms', methods=['POST', 'GET'])
 def alarms():
     request_dict = {}
-    request_dict = request.args.to_dict()
+    request_dict = request.form.to_dict()
 
     print(request_dict)
 
