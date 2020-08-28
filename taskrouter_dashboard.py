@@ -234,11 +234,14 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    print('DEBUG*******************', request_dict['Payload']['Timestamp'])
-    print('DEBUG*******************', request_dict['Level'])
-    print('DEBUG*******************', request_dict['error_code'])
-    print('DEBUG*******************', request_dict['method'])
-    print('DEBUG*******************', request_dict['body'])
+    for k, y in request_dict.items():
+        print(k, y)
+
+    # print('DEBUG*******************', request_dict['Payload']['Timestamp'])
+    # print('DEBUG*******************', request_dict['Level'])
+    # print('DEBUG*******************', request_dict['error_code'])
+    # print('DEBUG*******************', request_dict['method'])
+    # print('DEBUG*******************', request_dict['body'])
 
 
     alarmList = {}
