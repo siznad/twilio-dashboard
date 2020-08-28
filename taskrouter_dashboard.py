@@ -33,6 +33,7 @@ twilio_workflow_sid = os.environ["TWILIO_WORKFLOW_SID"]
 client = Client(twilio_account_sid, twilio_auth_token)
 
 def syncAlarms():
+    print('*****DEBUG******')
     alarmList = {}
 
     alerts = client.monitor.alerts.list(
