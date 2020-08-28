@@ -234,8 +234,8 @@ def alarms():
     alarmList = {}
 
     alerts = client.monitor.alerts.list(
-        end_date='2020-08-27',
-        start_date='2020-08-27',
+        end_date=str((datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d'))
+        start_date=str(datetime.datetime.today().strftime('%Y-%m-%d')),
         limit=10
     )
 
