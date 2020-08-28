@@ -32,37 +32,6 @@ twilio_workflow_sid = os.environ["TWILIO_WORKFLOW_SID"]
 # Create Client to access Twilio resources
 client = Client(twilio_account_sid, twilio_auth_token)
 
-def syncAlarms():
-    print('*****DEBUG******')
-    alarmList = {}
-
-    alerts = client.monitor.alerts.list(
-        end_date=str((datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')),
-        start_date=str(datetime.datetime.today().strftime('%Y-%m-%d')),
-        limit=10
-    )
-
-    for record in alerts:
-        alert = client.monitor.alerts(record.sid).fetch()
-
-        alarmList[alert.sid] = {
-            'timestamp': str(alert.date_created),
-            'level': alert.log_level,
-            'error_code': alert.error_code,
-            'method': alert.request_method,
-            'body': alert.response_body
-            }    
-
-    new_data = {'Data': json.dumps(alarmList)}
-    print(new_data)
-    sync_document = 'SyncAlarms'
-    url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
-    response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
-    return response
-
-response = syncAlarms()
-print(response)
-
 @app.route('/sync_taskrouter_statistics', methods=['GET'])
 def sync_taskrouter_statistics():
     # Get TaskRouter Statistics
@@ -262,8 +231,33 @@ def token():
 
 @app.route('/alarms', methods=['POST'])
 def alarms():
-    response = syncAlarms()
+    alarmList = {}
+
+    alerts = client.monitor.alerts.list(
+        end_date=str((datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')),
+        start_date=str(datetime.datetime.today().strftime('%Y-%m-%d')),
+        limit=10
+    )
+
+    for record in alerts:
+        alert = client.monitor.alerts(record.sid).fetch()
+
+        alarmList[alert.sid] = {
+            'timestamp': str(alert.date_created),
+            'level': alert.log_level,
+            'error_code': alert.error_code,
+            'method': alert.request_method,
+            'body': alert.response_body
+            }    
+
+    new_data = {'Data': json.dumps(alarmList)}
+    print(new_data)
+    sync_document = 'SyncAlarms'
+    url = 'https://sync.twilio.com/v1/Services/' + twilio_sync_service_id + '/Documents/' + sync_document
+    response = requests.request("POST", url, data=new_data, auth=HTTPBasicAuth(twilio_account_sid, twilio_auth_token))
     print(response)
+
+    return 'OK'
 
 
 if __name__ == '__main__':
