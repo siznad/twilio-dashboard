@@ -234,10 +234,8 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    if len(request_dict) == 0:
-        print('no request')
-
-    print(request_dict)
+    if len(request_dict) != 0:
+        print(request_dict['Timestamp'])
 
 
     # print('DEBUG*******************', request_dict['Timestamp'])
