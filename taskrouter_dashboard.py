@@ -236,7 +236,7 @@ def alarms():
 
     if len(request_dict) != 0:
         payload = json.loads(request_dict['Payload'])
-        print('DEBUG*******************', request_dict['Sid']
+        print('DEBUG*******************', request_dict['Sid'])
         print('DEBUG*******************', request_dict['Timestamp'])
         print('DEBUG*******************', request_dict['Level'])
         print('DEBUG*******************', payload['error_code'])
