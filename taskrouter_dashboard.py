@@ -240,8 +240,8 @@ def alarms():
         print('DEBUG*******************', request_dict['Timestamp'])
         print('DEBUG*******************', request_dict['Level'])
         print('DEBUG*******************', payload['error_code'])
-        print('DEBUG*******************', payload['request']['method'])
-        print('DEBUG*******************', payload['body'])
+        print('DEBUG*******************', payload['webhook']['request']['method'])
+        print('DEBUG*******************', payload['webhook']['body'])
 
 
     alarmList = {}
