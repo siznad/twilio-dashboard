@@ -234,7 +234,7 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
-    if request_dict.length == 0:
+    if len(request_dict) == 0:
         print('no request')
 
     print(request_dict)
