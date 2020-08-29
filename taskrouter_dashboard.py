@@ -235,13 +235,12 @@ def alarms():
     request_dict = request.form.to_dict()
 
     if len(request_dict) != 0:
-        print(request_dict)
         payload = json.loads(request_dict['Payload'])
         print('DEBUG*******************', request_dict['Timestamp'])
         print('DEBUG*******************', request_dict['Level'])
         print('DEBUG*******************', payload['error_code'])
         print('DEBUG*******************', payload['webhook']['request']['method'])
-        print('DEBUG*******************', payload['webhook']['body'])
+        print('DEBUG*******************', payload['webhook']['response']['body'])
 
 
     alarmList = {}
