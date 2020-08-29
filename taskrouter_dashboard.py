@@ -240,7 +240,7 @@ def alarms():
         print('DEBUG*******************', request_dict['Timestamp'])
         print('DEBUG*******************', request_dict['Level'])
         print('DEBUG*******************', payload['error_code'])
-        print('DEBUG*******************', request_dict['method'])
+        print('DEBUG*******************', payload['request']['method'])
         print('DEBUG*******************', payload['body'])
 
 
