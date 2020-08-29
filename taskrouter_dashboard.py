@@ -234,17 +234,18 @@ def alarms():
     request_dict = {}
     request_dict = request.form.to_dict()
 
+    alarmList = {}
+
     if len(request_dict) != 0:
         payload = json.loads(request_dict['Payload'])
-        print('DEBUG*******************', request_dict['Sid'])
-        print('DEBUG*******************', request_dict['Timestamp'])
-        print('DEBUG*******************', request_dict['Level'])
-        print('DEBUG*******************', payload['error_code'])
-        print('DEBUG*******************', payload['webhook']['request']['method'])
-        print('DEBUG*******************', payload['webhook']['response']['body'])
 
-
-    alarmList = {}
+        alarmList[request_dict['Sid']] = {
+            'timestamp': str(request_dict['Timestamp']),
+            'level': request_dict['Level'],
+            'error_code': payload['error_code'],
+            'method': payload['webhook']['request']['method'],
+            'body': payload['webhook']['response']['body']
+            }  
 
     alerts = client.monitor.alerts.list(
         end_date=str((datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')),
