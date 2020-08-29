@@ -231,11 +231,11 @@ def token():
 
 @app.route('/alarms', methods=['POST', 'GET'])
 def alarms():
-    if request == None:
-        print('no request')
-        
     request_dict = {}
     request_dict = request.form.to_dict()
+
+    if request_dict == None:
+        print('no request')
 
     print(request_dict)
 
