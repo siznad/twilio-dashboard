@@ -235,14 +235,11 @@ def alarms():
     request_dict = request.form.to_dict()
 
     if len(request_dict) != 0:
-        print(request_dict['Timestamp'])
-
-
-    # print('DEBUG*******************', request_dict['Timestamp'])
-    # print('DEBUG*******************', request_dict['Level'])
-    # print('DEBUG*******************', request_dict['error_code'])
-    # print('DEBUG*******************', request_dict['method'])
-    # print('DEBUG*******************', request_dict['body'])
+        print('DEBUG*******************', request_dict['Timestamp'])
+        print('DEBUG*******************', request_dict['Level'])
+        print('DEBUG*******************', request_dict['error_code'])
+        print('DEBUG*******************', request_dict['method'])
+        print('DEBUG*******************', request_dict['body'])
 
 
     alarmList = {}
