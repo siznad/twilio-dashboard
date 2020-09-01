@@ -240,7 +240,7 @@ def alarms():
         payload = json.loads(request_dict['Payload'])
 
         alarmList[request_dict['Sid']] = {
-            'timestamp': str(request_dict['Timestamp']),
+            'timestamp': str(request_dict['Timestamp'].("%m/%d/%Y, %H:%M:%S")),
             'level': request_dict['Level'].lower(),
             'error_code': payload['error_code'],
             'method': payload['webhook']['request']['method'],
@@ -257,7 +257,7 @@ def alarms():
         alert = client.monitor.alerts(record.sid).fetch()
 
         alarmList[alert.sid] = {
-            'timestamp': str(alert.date_created),
+            'timestamp': str(alert.date_created).("%m/%d/%Y, %H:%M:%S"),
             'level': alert.log_level,
             'error_code': alert.error_code,
             'method': alert.request_method,
