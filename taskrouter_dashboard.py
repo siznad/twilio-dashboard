@@ -258,7 +258,7 @@ def alarms():
     for record in alerts:
         alert = client.monitor.alerts(record.sid).fetch()
 
-        tmpDate = datetime.datetime.strptime(str(alert.date_created), "%m/%d/%Y, %H:%M:%S")
+        tmpDate = datetime.datetime.strftime(alert.date_created, "%m/%d/%Y, %H:%M:%S")
 
         alarmList[alert.sid] = {
             'timestamp': str(tmpDate),
