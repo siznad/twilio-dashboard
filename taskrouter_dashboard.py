@@ -239,10 +239,8 @@ def alarms():
     if len(request_dict) != 0:
         payload = json.loads(request_dict['Payload'])
 
-        tmpDate = datetime.datetime.strptime(str(request_dict['Timestamp']), "%m/%d/%Y, %H:%M:%S")
-
         alarmList[request_dict['Sid']] = {
-            'timestamp': str(tmpDate),
+            'timestamp': str(datetime.datetime.strftime(request_dict['Timestamp']), "%m/%d/%Y, %H:%M:%S")),
             'level': request_dict['Level'].lower(),
             'error_code': payload['error_code'],
             'method': payload['webhook']['request']['method'],
@@ -258,10 +256,8 @@ def alarms():
     for record in alerts:
         alert = client.monitor.alerts(record.sid).fetch()
 
-        tmpDate = datetime.datetime.strftime(alert.date_created, "%m/%d/%Y, %H:%M:%S")
-
         alarmList[alert.sid] = {
-            'timestamp': str(tmpDate),
+            'timestamp': str(datetime.datetime.strftime(alert.date_created, "%m/%d/%Y, %H:%M:%S")),
             'level': alert.log_level,
             'error_code': alert.error_code,
             'method': alert.request_method,
