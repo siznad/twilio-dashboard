@@ -239,7 +239,7 @@ def alarms():
     if len(request_dict) != 0:
         payload = json.loads(request_dict['Payload'])
 
-        tmpDate = datetime.datetime.strptime(request_dict['Timestamp'], "%Y-%m-%dT%H:%M:%S.%zZ")
+        tmpDate = datetime.datetime.strptime(request_dict['Timestamp'], "%Y-%m-%dT%H:%M:%S.%fZ")
 
         alarmList[request_dict['Sid']] = {
             'timestamp': str(datetime.datetime.strftime(tmpDate), "%m%d/%Y, %H:%M:%S"),
