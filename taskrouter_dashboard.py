@@ -242,7 +242,7 @@ def alarms():
         alarmList[request_dict['Sid']] = {
             'timestamp': str(request_dict['Timestamp']),
             'level': request_dict['Level'],
-            'error_code': payload['error_code'],
+            'error_code': payload['error_code'].lower(),
             'method': payload['webhook']['request']['method'],
             'body': payload['webhook']['response']['body']
             }  
