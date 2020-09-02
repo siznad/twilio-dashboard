@@ -242,7 +242,7 @@ def alarms():
         tmpDate = datetime.datetime.strptime(request_dict['Timestamp'], "%Y-%m-%dT%H:%M:%S.%fZ")
 
         alarmList[request_dict['Sid']] = {
-            'timestamp': str(datetime.datetime.strftime(tmpDate, "%m%d/%Y, %H:%M:%S")),
+            'timestamp': str(datetime.datetime.strftime(tmpDate, "%m/%d/%Y, %H:%M:%S")),
             'level': request_dict['Level'].lower(),
             'error_code': payload['error_code'],
             'method': payload['webhook']['request']['method'],
