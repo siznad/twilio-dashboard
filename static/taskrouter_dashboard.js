@@ -254,6 +254,7 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   //changes on this document, we can trigger our UI to update
   syncClient.document('SyncTaskRouterStats').then(function (doc) {
     doc.on("updated",function(data) {
+      console.log('**************WTF', data)
       console.log('SyncTaskRouterStats: '+ JSON.stringify(data));
       taskrouterDashboard.syncTaskRouterStats(data);
     });
