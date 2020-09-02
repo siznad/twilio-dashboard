@@ -254,7 +254,8 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
     doc.on("updated",function(data) {
       console.log('SyncTaskRouterStats: '+ JSON.stringify(data));
       taskrouterDashboard.syncTaskRouterStats(data);
-    });
+    })
+    .catch((err) => console.log(err));
   });
   //This code will create and/or open a Sync Alarm Events document
   syncDocName = 'SyncAlarms';
