@@ -195,34 +195,28 @@ var taskrouterDashboard = new Vue({
     serverSideStatsInit: function() {
       return axios.get(this.stats_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
-          console.log('DEBUG************ serverSideStatsInit response', response['data']['data']);
           taskrouterDashboard.syncTaskRouterStats(response['data']['data']);
           console.log('Server Side Stats Synced');
         })
         .catch(function (error) {
-          console.log('*****************ERROR', error);
+          console.log(error);
         })
     },
     serverSideAlarmInit: function() {
       return axios.get(this.alarm_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
-          console.log('DEBUG************ serverSideAlarmStatsInit response', response['data']['data']);
           taskrouterDashboard.syncAlarms(response['data']['data']);
           console.log('Server Side Alarms Synced');
         })
         .catch(function (error) {
-          console.log('*****************ERROR', error);
+          console.log(error);
         })
     },
   },
   mounted() {
-    console.log('In mounted!')
     this.serverSideStatsInit();
     this.fetchTasks();
     this.serverSideAlarmInit();
-    // $.getJSON('/alarms', function (response) {
-    //   console.log('******DEBUG mounted get alarms', response)
-    // })
   }
 })
 
@@ -257,30 +251,29 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       //taskrouterDashboard.fetchData();
     });
   })
-  .catch((err) => console.log('*******************ERROR', err));
+  .catch((err) => console.log(err));
   //This code will create and/or open a Sync TaskRouter Workflow Stats document
   //syncDocName = 'SyncTaskRouterStats';
   syncClient.document('SyncTaskRouterStats').then(function(doc) {
     console.log('SyncTaskRouterStats' + ' Opened: ' + doc.value)
   })
-  .catch((err) => console.log('*******************ERROR', err));
+  .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document('SyncTaskRouterStats').then(function (doc) {
     doc.on("updated",function(data) {
-      console.log('******************DEBUG syncClient.document', data)
       console.log('SyncTaskRouterStats: '+ JSON.stringify(data));
       taskrouterDashboard.syncTaskRouterStats(data);
     });
   })
-  .catch((err) => console.log('*******************ERROR', err));
+  .catch((err) => console.log(err));
   //This code will create and/or open a Sync Alarm Events document
   //syncDocName = 'SyncAlarms';
   syncClient.document('SyncAlarms').then(function(doc) {
     //doc.set({});
     console.log('SyncAlarms' + ' Opened: ' + doc.value)
   })
-  .catch((err) => console.log('*******************ERROR', err));
+  .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document('SyncAlarms').then(function (doc) {
@@ -290,5 +283,5 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       //taskrouterDashboard.fetchData();
     });
   })
-  .catch((err) => console.log('*******************ERROR', err));
+  .catch((err) => console.log(err));
 });
