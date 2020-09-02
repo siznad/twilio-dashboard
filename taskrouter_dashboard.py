@@ -52,6 +52,8 @@ def sync_taskrouter_statistics():
     stats['completed'] = statistics.cumulative['tasks_completed']
     stats['canceled'] = statistics.cumulative['tasks_canceled']
 
+    print(stats)
+
     for x in statistics.realtime['activity_statistics']:
         if (x['friendly_name'] == 'Offline'):
             stats['activityOfflineWorkers'] = x['workers']
