@@ -246,7 +246,8 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   syncDocName = 'SyncTaskRouterStats';
   syncClient.document(syncDocName).then(function(doc) {
     console.log(syncDocName + ' Opened: ' + doc.value)
-  });
+  })
+  .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document(syncDocName).then(function (doc) {
