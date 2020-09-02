@@ -198,7 +198,7 @@ var taskrouterDashboard = new Vue({
           console.log('Server Side Stats Synced');
         })
         .catch(function (error) {
-          console.log(error);
+          console.log('*****************ERROR', error);
         })
     }
   },
