@@ -230,10 +230,10 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   taskrouterDashboard.$data.syncStatus = userid + ' Connected';
   //This code will create and/or open a Sync TaskRouter Events document
   syncDocName = 'SyncTaskRouterEvents';
-  console.log('*****************', syncDocName)
+  console.log('DEBUG*****************', syncDocName)
   syncClient.document(syncDocName).then(function(doc) {
     //doc.set({});
-    console.log(syncDocName + ' Opened: ' + doc.value)
+    console.log('*******************DEBUG', syncDocName + ' Opened: ' + doc.value)
   })
   .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
