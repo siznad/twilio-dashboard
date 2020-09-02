@@ -233,7 +233,7 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   console.log('DEBUG*****************', 'SyncTaskRouterEvents')
   syncClient.document('SyncTaskRouterEvents').then(function(doc) {
     //doc.set({});
-    console.log('*******************DEBUG', syncDocName + ' Opened: ' + doc.value)
+    console.log('*******************DEBUG', 'SyncTaskRouterEvents' + ' Opened: ' + doc.value)
   })
   .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
