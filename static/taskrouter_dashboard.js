@@ -217,7 +217,7 @@ var taskrouterDashboard = new Vue({
 var syncClient;
 //We're going to use a single Sync document, our simplest
 //synchronisation primitive, for this demo
-var syncDocName;
+//var syncDocName;
 var userid = taskrouterDashboard.$data.loggedUser;
 var ts = Math.round((new Date()).getTime() / 1000);
 tokenUserid = userid + ts;
@@ -229,16 +229,16 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   console.log('******DEBUG', syncClient)
   taskrouterDashboard.$data.syncStatus = userid + ' Connected';
   //This code will create and/or open a Sync TaskRouter Events document
-  syncDocName = 'SyncTaskRouterEvents';
-  console.log('DEBUG*****************', syncDocName)
-  syncClient.document(syncDocName).then(function(doc) {
+  //syncDocName = 'SyncTaskRouterEvents';
+  console.log('DEBUG*****************', 'SyncTaskRouterEvents')
+  syncClient.document('SyncTaskRouterEvents').then(function(doc) {
     //doc.set({});
     console.log('*******************DEBUG', syncDocName + ' Opened: ' + doc.value)
   })
   .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
-  syncClient.document(syncDocName).then(function (doc) {
+  syncClient.document('SyncTaskRouterEvents').then(function (doc) {
     doc.on("updated",function(data) {
       console.log('SyncTaskRouterEvents: ' + JSON.stringify(data));
       taskrouterDashboard.syncEvents(data);
@@ -247,14 +247,14 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   })
   .catch((err) => console.log(err));
   //This code will create and/or open a Sync TaskRouter Workflow Stats document
-  syncDocName = 'SyncTaskRouterStats';
-  syncClient.document(syncDocName).then(function(doc) {
-    console.log(syncDocName + ' Opened: ' + doc.value)
+  //syncDocName = 'SyncTaskRouterStats';
+  syncClient.document('SyncTaskRouterStats').then(function(doc) {
+    console.log('SyncTaskRouterStats' + ' Opened: ' + doc.value)
   })
   .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
-  syncClient.document(syncDocName).then(function (doc) {
+  syncClient.document('SyncTaskRouterStats').then(function (doc) {
     doc.on("updated",function(data) {
       console.log('SyncTaskRouterStats: '+ JSON.stringify(data));
       taskrouterDashboard.syncTaskRouterStats(data);
@@ -262,15 +262,15 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   })
   .catch((err) => console.log(err));
   //This code will create and/or open a Sync Alarm Events document
-  syncDocName = 'SyncAlarms';
-  syncClient.document(syncDocName).then(function(doc) {
+  //syncDocName = 'SyncAlarms';
+  syncClient.document('SyncAlarms').then(function(doc) {
     //doc.set({});
-    console.log(syncDocName + ' Opened: ' + doc.value)
+    console.log('SyncAlarms' + ' Opened: ' + doc.value)
   })
   .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
-  syncClient.document(syncDocName).then(function (doc) {
+  syncClient.document('SyncAlarms').then(function (doc) {
     doc.on("updated",function(data) {
       console.log('SyncAlarms: ' + JSON.stringify(data));
       taskrouterDashboard.syncAlarms(data);
