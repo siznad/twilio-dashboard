@@ -141,9 +141,6 @@ def sync_taskrouter_tasks():
     sync_map = 'SyncTaskRouterTasks'
     new_data = {}
 
-    print(len(results))
-    print(results)
-
     # Delete the current Sync Map and re-create if we have Tasks
     if (len(results) > 0):
         # Delete the Sync Map
