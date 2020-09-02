@@ -49,7 +49,7 @@ def sync_taskrouter_statistics():
         task_status = k + 'Tasks'
         stats[task_status] = statistics.realtime['tasks_by_status'][k]
 
-    stats['completedTasks'] = cumulativeStats['tasks_completed']
+    stats['completedTasks'] = cumulativeStats.tasks_completed
     stats['canceledTasks'] = statistics.cumulative['tasks_canceled']
 
     print(stats)
