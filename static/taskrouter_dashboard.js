@@ -195,6 +195,7 @@ var taskrouterDashboard = new Vue({
       return axios.get(this.stats_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
           console.log('DEBUG************ serverSideStatsInit response', response['data']['data']);
+          taskrouterDashboard.syncTaskRouterStats(response['data']['data']);
           console.log('Server Side Stats Synced');
         })
         .catch(function (error) {
