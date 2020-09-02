@@ -223,7 +223,6 @@ var ts = Math.round((new Date()).getTime() / 1000);
 tokenUserid = userid + ts;
 taskrouterDashboard.$data.syncEndpoint = tokenUserid;
 $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
-  console.log('Getting token!', tokenResponse)
   //Initialize the Sync client
   syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
   taskrouterDashboard.$data.syncStatus = userid + ' Connected';
@@ -232,7 +231,8 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   syncClient.document(syncDocName).then(function(doc) {
     //doc.set({});
     console.log(syncDocName + ' Opened: ' + doc.value)
-  });
+  })
+  .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document(syncDocName).then(function (doc) {
@@ -241,7 +241,8 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       taskrouterDashboard.syncEvents(data);
       //taskrouterDashboard.fetchData();
     });
-  });
+  })
+  .catch((err) => console.log(err));
   //This code will create and/or open a Sync TaskRouter Workflow Stats document
   syncDocName = 'SyncTaskRouterStats';
   syncClient.document(syncDocName).then(function(doc) {
@@ -262,7 +263,8 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   syncClient.document(syncDocName).then(function(doc) {
     //doc.set({});
     console.log(syncDocName + ' Opened: ' + doc.value)
-  });
+  })
+  .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document(syncDocName).then(function (doc) {
@@ -271,5 +273,6 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       taskrouterDashboard.syncAlarms(data);
       //taskrouterDashboard.fetchData();
     });
-  });
+  })
+  .catch((err) => console.log(err));
 });
