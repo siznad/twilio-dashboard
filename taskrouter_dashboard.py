@@ -38,6 +38,10 @@ def sync_taskrouter_statistics():
     stats = {}
     # Get Workspace related stats from last 60 minutes
     statistics = client.taskrouter.workspaces(twilio_workspace_sid).statistics().fetch(minutes=60)
+
+    cumulativeStats = client.taskrouter.workspaces(twilio_workspace_sid).cumulativeStatistics().fetch(minutes=480)
+    print('*********cumulative test', cumulativeStats)
+
     stats['totalTasks'] = statistics.realtime['total_tasks']
     stats['totalWorkers'] = statistics.realtime['total_workers']
     task_statuses = statistics.realtime['tasks_by_status']
