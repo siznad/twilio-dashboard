@@ -132,7 +132,7 @@ def taskrouter_tasks():
         task_model['TaskStatus'] = task.assignment_status
 
         if (task.assignment_status == 'completed'):
-            call = client.calls(task..attribures['worker_call_sid']).fetch()
+            call = client.calls(task.attribures['worker_call_sid']).fetch()
             print('*****************CALLDEBUG*********', call)
 
         tasks_results.append(dict(task_model))
