@@ -132,6 +132,10 @@ def taskrouter_tasks():
         task_model['TaskStatus'] = task.assignment_status
         tasks_results.append(dict(task_model))
     result = json.dumps(tasks_results)
+
+    if (task_model['TaskStatus'] == 'completed'):
+        call = client.calls('CA42ed11f93dc08b952027ffbc406d0868').fetch()
+        print(call)
     
     print(result)
     return result
