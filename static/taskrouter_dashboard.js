@@ -203,6 +203,7 @@ var taskrouterDashboard = new Vue({
     }
   },
   mounted() {
+    console.log('In mounted!')
     this.serverSideStatsInit();
     this.fetchTasks();
     $.getJSON('/alarms', function (response) {
