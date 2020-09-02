@@ -204,8 +204,10 @@ var taskrouterDashboard = new Vue({
   mounted() {
     this.serverSideStatsInit();
     this.fetchTasks();
-    this.SyncTaskRouterStats();
     $.getJSON('/alarms', function (response) {
+      console.log(response)
+    })
+    $.getJSON('/sync_taskrouter_statistics', function (response) {
       console.log(response)
     })
   }
