@@ -10,6 +10,7 @@ from twilio.rest import Client
 from twilio.jwt.access_token import AccessToken
 from twilio.jwt.access_token.grants import SyncGrant
 import datetime
+from time import sleep
 
 logging.basicConfig(level=logging.INFO)
 
@@ -34,6 +35,7 @@ client = Client(twilio_account_sid, twilio_auth_token)
 
 @app.route('/sync_taskrouter_statistics', methods=['GET'])
 def sync_taskrouter_statistics():
+    sleep(1000)
     # Get TaskRouter Statistics
     stats = {}
     # Get Workspace related stats from last 60 minutes
