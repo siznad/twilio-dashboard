@@ -26,6 +26,7 @@ var taskrouterDashboard = new Vue({
     withinSLA: true,
     eventType: "Connected to Event Stream",
     stats_get_url: "/sync_taskrouter_statistics",
+    alarm_get_url: "/alarms",
     workers_get_url: "/taskrouter_workers",
     workers: {},
     tasks_get_url: "/taskrouter_tasks",
@@ -201,7 +202,18 @@ var taskrouterDashboard = new Vue({
         .catch(function (error) {
           console.log('*****************ERROR', error);
         })
-    }
+    },
+    serverSideAlarmInit: function() {
+      return axios.get(this.alarm_get_url + '?userid=' + this.loggedUser)
+        .then(function (response) {
+          console.log('DEBUG************ serverSideAlarmStatsInit response', response['data']['data']);
+          taskrouterDashboard.syncAlarms(response['data']['data']);
+          console.log('Server Side Alarms Synced');
+        })
+        .catch(function (error) {
+          console.log('*****************ERROR', error);
+        })
+    },
   },
   mounted() {
     console.log('In mounted!')
@@ -209,7 +221,6 @@ var taskrouterDashboard = new Vue({
     this.fetchTasks();
     $.getJSON('/alarms', function (response) {
       console.log('******DEBUG mounted get alarms', response)
-      this.syncAlarms(response['data']['data'])
     })
   }
 })
