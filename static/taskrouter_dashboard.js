@@ -154,6 +154,7 @@ var taskrouterDashboard = new Vue({
           this.currentTaskStatus['completed'] = 0;
         }
         if (data['canceledTasks']) {
+          console.log('**********************', data['canceledTasks'])
           this.currentTaskStatus['canceled'] = data['canceledTasks'];
         } else {
           this.currentTaskStatus['canceled'] = 0;
