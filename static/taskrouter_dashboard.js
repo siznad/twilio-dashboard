@@ -194,7 +194,7 @@ var taskrouterDashboard = new Vue({
     serverSideStatsInit: function() {
       return axios.get(this.stats_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
-          console.log('*********************DEBUG***********', response)
+          console.log(response)
           console.log('Server Side Stats Synced');
         })
         .catch(function (error) {
@@ -223,8 +223,10 @@ var ts = Math.round((new Date()).getTime() / 1000);
 tokenUserid = userid + ts;
 taskrouterDashboard.$data.syncEndpoint = tokenUserid;
 $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
+  console.log('In get token!')
   //Initialize the Sync client
   syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
+  console.log('******DEBUG', syncClient)
   taskrouterDashboard.$data.syncStatus = userid + ' Connected';
   //This code will create and/or open a Sync TaskRouter Events document
   syncDocName = 'SyncTaskRouterEvents';
