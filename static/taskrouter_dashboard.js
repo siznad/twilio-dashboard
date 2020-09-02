@@ -219,9 +219,10 @@ var taskrouterDashboard = new Vue({
     console.log('In mounted!')
     this.serverSideStatsInit();
     this.fetchTasks();
-    $.getJSON('/alarms', function (response) {
-      console.log('******DEBUG mounted get alarms', response)
-    })
+    this.serverSideAlarmInit();
+    // $.getJSON('/alarms', function (response) {
+    //   console.log('******DEBUG mounted get alarms', response)
+    // })
   }
 })
 
