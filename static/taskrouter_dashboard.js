@@ -209,7 +209,7 @@ var taskrouterDashboard = new Vue({
     this.fetchTasks();
     $.getJSON('/alarms', function (response) {
       console.log('******DEBUG mounted get alarms', response)
-      syncAlarms(response['data']['data'])
+      this.syncAlarms(response['data']['data'])
     })
   }
 })
