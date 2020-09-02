@@ -194,8 +194,7 @@ var taskrouterDashboard = new Vue({
     serverSideStatsInit: function() {
       return axios.get(this.stats_get_url + '?userid=' + this.loggedUser)
         .then(function (response) {
-          console.log(response);
-          taskrouterDashboard.syncTaskRouterStats(response);
+          console.log('DEBUG************ serverSideStatsInit response', response);
           console.log('Server Side Stats Synced');
         })
         .catch(function (error) {
@@ -255,7 +254,7 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   //changes on this document, we can trigger our UI to update
   syncClient.document('SyncTaskRouterStats').then(function (doc) {
     doc.on("updated",function(data) {
-      console.log(data)
+      console.log('******************DEBUG syncClient.document', data)
       console.log('SyncTaskRouterStats: '+ JSON.stringify(data));
       taskrouterDashboard.syncTaskRouterStats(data);
     });
