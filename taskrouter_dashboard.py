@@ -133,8 +133,8 @@ def taskrouter_tasks():
 
         if (task.assignment_status == 'completed'):
             print(task.attributes)
-            call = client.calls(task['attribures']['worker_call_sid']).fetch()
-            print('*****************CALLDEBUG*********', call)
+            #call = client.calls(task['attribures']['worker_call_sid']).fetch()
+            #print('*****************CALLDEBUG*********', call)
 
         tasks_results.append(dict(task_model))
     result = json.dumps(tasks_results)
