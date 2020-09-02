@@ -40,15 +40,17 @@ def sync_taskrouter_statistics():
     statistics = client.taskrouter.workspaces(twilio_workspace_sid).statistics().fetch(minutes=60)
 
     cumulativeStats = client.taskrouter.workspaces(twilio_workspace_sid).cumulative_statistics().fetch(minutes=480)
-    print('*********cumulative test', cumulativeStats)
 
-    stats['totalTasks'] = statistics.realtime['total_tasks']
+    stats['totalTasks'] = statistics.cumulative['total_tasks']
     stats['totalWorkers'] = statistics.realtime['total_workers']
     task_statuses = statistics.realtime['tasks_by_status']
     for (k, v) in task_statuses.items():
         print(k, v)
         task_status = k + 'Tasks'
         stats[task_status] = statistics.realtime['tasks_by_status'][k]
+
+    stats['completed'] = statistics.cumulative['tasks_completed']
+    stats['canceled'] = statistics.cumulative['tasks_canceled']
 
     for x in statistics.realtime['activity_statistics']:
         if (x['friendly_name'] == 'Offline'):
