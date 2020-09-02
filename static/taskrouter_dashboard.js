@@ -223,6 +223,7 @@ var ts = Math.round((new Date()).getTime() / 1000);
 tokenUserid = userid + ts;
 taskrouterDashboard.$data.syncEndpoint = tokenUserid;
 $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
+  console.log('Getting token!')
   //Initialize the Sync client
   syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
   taskrouterDashboard.$data.syncStatus = userid + ' Connected';
