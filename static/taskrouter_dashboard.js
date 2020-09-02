@@ -226,14 +226,12 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
   console.log('In get token!')
   //Initialize the Sync client
   syncClient = new Twilio.Sync.Client(tokenResponse.token, { logLevel: 'info' });
-  console.log('******DEBUG', syncClient)
   taskrouterDashboard.$data.syncStatus = userid + ' Connected';
   //This code will create and/or open a Sync TaskRouter Events document
   //syncDocName = 'SyncTaskRouterEvents';
-  console.log('DEBUG*****************', 'SyncTaskRouterEvents')
   syncClient.document('SyncTaskRouterEvents').then(function(doc) {
     //doc.set({});
-    console.log('*******************DEBUG', 'SyncTaskRouterEvents' + ' Opened: ' + doc.value)
+    console.log('SyncTaskRouterEvents' + ' Opened: ' + doc.value)
   })
   .catch((err) => console.log(err));
   //Let's subscribe to changes on this document, so when something
@@ -245,13 +243,13 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       //taskrouterDashboard.fetchData();
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('*******************ERROR', err));
   //This code will create and/or open a Sync TaskRouter Workflow Stats document
   //syncDocName = 'SyncTaskRouterStats';
   syncClient.document('SyncTaskRouterStats').then(function(doc) {
     console.log('SyncTaskRouterStats' + ' Opened: ' + doc.value)
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('*******************ERROR', err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document('SyncTaskRouterStats').then(function (doc) {
@@ -260,14 +258,14 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       taskrouterDashboard.syncTaskRouterStats(data);
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('*******************ERROR', err));
   //This code will create and/or open a Sync Alarm Events document
   //syncDocName = 'SyncAlarms';
   syncClient.document('SyncAlarms').then(function(doc) {
     //doc.set({});
     console.log('SyncAlarms' + ' Opened: ' + doc.value)
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('*******************ERROR', err));
   //Let's subscribe to changes on this document, so when something
   //changes on this document, we can trigger our UI to update
   syncClient.document('SyncAlarms').then(function (doc) {
@@ -277,5 +275,5 @@ $.getJSON('/token' + '?identity=' + tokenUserid, function (tokenResponse) {
       //taskrouterDashboard.fetchData();
     });
   })
-  .catch((err) => console.log(err));
+  .catch((err) => console.log('*******************ERROR', err));
 });
